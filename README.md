@@ -1,2 +1,3 @@
-# supreme-broccoli
-Scripts to spin up a brand new (or reimaged) machine; Windows, or Linux.
+# Supreme Broccoli
+
+Scripts to spin up a brand new (or reimaged) machine; Windows, or Linux. Uses Powershell for Windows, idk about Linux yet.
