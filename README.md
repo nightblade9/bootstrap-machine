@@ -1,3 +1,3 @@
-# Supreme Broccoli
+# Bootstrap Machine
 
-Scripts to spin up a brand new (or reimaged) machine; Windows, or Linux. Uses Powershell for Windows, idk about Linux yet.
+Scripts to spin up a brand new (or reimaged) machine; Linux (via bash) or Windows (via Powershell and Chocolatey).
