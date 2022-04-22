@@ -2,7 +2,7 @@
 
 # Install *everything!* Assumes you're on Arch/Manjaro.
 su root
-sudo pacman -S code godot gimp audacity lmms
+sudo pacman -S code godot gimp audacity lmms git-lfs
 exit
 
 # Add a swap file for hibernation. Assumes 16GB RAM. See: https://wiki.manjaro.org/index.php/Swap/en
