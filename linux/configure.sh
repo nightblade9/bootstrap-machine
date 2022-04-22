@@ -6,5 +6,5 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 
-### Enable hibernation manually! Requires parsing blkid! 
-# Follow these steps: https://confluence.jaytaala.com/display/TKB/Use+a+swap+file+and+enable+hibernation+on+Arch+Linux+-+including+on+a+LUKS+root+partition
+echo Enable hibernation manually! Requires parsing blkid! 
+echo Follow these steps: https://confluence.jaytaala.com/display/TKB/Use+a+swap+file+and+enable+hibernation+on+Arch+Linux+-+including+on+a+LUKS+root+partition
