@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # Install *everything!* Assumes you're on Arch/Manjaro.
-su root
 sudo pacman -S code godot gimp audacity lmms git-lfs
-exit
 
 git lfs install
 
