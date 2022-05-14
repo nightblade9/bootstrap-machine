@@ -8,8 +8,11 @@ sudo timedatectl set-local-rtc 1
 cd /tmp
 git clone https://github.com/brektrou/rtl8821CU
 cd rtl8821CU
-sudo pacman -S dkms
-./dkms-install.sh
+uname -r
+echo note the major and minor version  number, e.g. 5.15 means install headers-515
+sudo pacman -S linux-headers
+sudo pacman -S dkms 
+sudo ./dkms-install.sh
 
 echo plug in wifi now
 
