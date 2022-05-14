@@ -4,6 +4,15 @@
 # See: https://itsfoss.com/wrong-time-dual-boot/
 sudo timedatectl set-local-rtc 1
 
+# Initialize pacman and upgrade everything
+sudo pacman -Sy
+
+# Remove cruft
+sudo pacman -R thunderbird
+
+# Upgrade everything
+pacman -Syu
+
 ### Get and build wifi driver
 # pretend we have the 5.15.32 drivers, we have 5.15.38
 sudo ln -s /usr/lib/modules/5.15.38-1-MANJARO /usr/lib/modules/5.15.32-1-MANJARO
@@ -18,15 +27,6 @@ sudo pacman -S dkms
 sudo ./dkms-install.sh
 
 echo plug in wifi now
-
-# Initialize pacman and upgrade everything
-sudo pacman -Sy
-
-# Remove cruft
-sudo pacman -R thunderbird
-
-# Upgrade everything
-pacman -Syu
 
 # Install *everything!* Assumes you're on Arch/Manjaro.
 sudo pacman -S code godot gimp audacity lmms git-lfs
