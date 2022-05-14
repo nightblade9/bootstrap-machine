@@ -26,13 +26,6 @@ sudo pacman -S linux515-headers
 sudo pacman -S dkms 
 sudo ./dkms-install.sh
 
-echo plug in wifi now
-
-# Install *everything!* Assumes you're on Arch/Manjaro.
-sudo pacman -S code godot gimp audacity lmms git-lfs
-
-git lfs install
-
 # Add a swap file for hibernation. Assumes 16GB RAM. See: https://wiki.manjaro.org/index.php/Swap/en
 # This also enables hibernation. (Previous versions of Manjaro required additional steps.)
 sudo dd if=/dev/zero of=/swapfile bs=1M count=20480 status=progress
@@ -48,5 +41,15 @@ sudo filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}' 
 
 sudo mkinitcpio -P
 sudo update-grub
+
+# Blacklisting bad wifi doesn't work; disable it on startup
+echo sudo modprobe -r r8169 >>~/.bashrc
+
+# Done. Install everything we need.
+sudo pacman -S code godot gimp audacity lmms git-lfs
+git lfs install
+# git config
+git config --global user.name nightblade9
+git config --global user.email nightbladecodes@gmail.com
 
 sudo shutdown -r 0
