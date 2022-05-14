@@ -10,7 +10,7 @@ git clone https://github.com/brektrou/rtl8821CU
 cd rtl8821CU
 uname -r
 echo note the major and minor version  number, e.g. 5.15 means install headers-515
-sudo pacman -S linux-headers
+sudo pacman -S linux515-headers
 sudo pacman -S dkms 
 sudo ./dkms-install.sh
 
