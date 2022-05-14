@@ -4,7 +4,10 @@
 # See: https://itsfoss.com/wrong-time-dual-boot/
 sudo timedatectl set-local-rtc 1
 
-# Get and build wifi driver
+### Get and build wifi driver
+# pretend we have the 5.15.32 drivers, we have 5.15.38
+sudo ln -s /usr/lib/modules/5.15.38-1-MANJARO /usr/lib/modules/5.15.32-1-MANJARO
+
 cd /tmp
 git clone https://github.com/brektrou/rtl8821CU
 cd rtl8821CU
