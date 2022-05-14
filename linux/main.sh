@@ -38,6 +38,7 @@ sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 findmnt -no UUID -T /swapfile # gives the hibernation device UUID
 sudo filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}' # gives the offset
 # Run sudo vi /etc/default/grub and append this (with the values above) to GRUB_CMDLINE_LINUX_DEFAULT: resume=UUID=<uuid> resume_offset=<offset>
+# Then: sudo vi /etc/mkinitcpio.conf. Look for HOOKS=(...) and add "resume" (no quotes) in there before fsck
 
 sudo mkinitcpio -P
 sudo update-grub
@@ -45,7 +46,7 @@ sudo update-grub
 # Blacklisting bad wifi doesn't work; disable it on startup
 echo sudo modprobe -r r8169 >>~/.bashrc
 
-# Done. Install everything we need.
+### Done. Install everything we need.
 sudo pacman -S code godot gimp audacity lmms git-lfs
 git lfs install
 # git config
