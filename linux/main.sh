@@ -46,8 +46,7 @@ findmnt -no UUID -T /swapfile # gives the hibernation device UUID
 sudo filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}' # gives the offset
 # Run sudo vi /etc/default/grub and append this (with the values above) to GRUB_CMDLINE_LINUX_DEFAULT: resume=UUID=<uuid> resume_offset=<offset>
 
-echo done with that? press enter
-read x
-
 sudo mkinitcpio -P
 sudo update-grub
+
+sudo shutdown -r 0
