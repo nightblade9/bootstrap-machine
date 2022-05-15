@@ -4,6 +4,12 @@
 # See: https://itsfoss.com/wrong-time-dual-boot/
 sudo timedatectl set-local-rtc 1
 
+
+# Temporarily disable flaky wifi; this needs to be done automatically on startup, somehow.
+echo sudo modprobe -r ath10k_pci >~/fix-internet.sh
+chmod a+x ~/fix-internet.sh
+~/fix-internet.sh
+
 # Initialize pacman and upgrade everything
 sudo pacman -Sy
 
@@ -49,15 +55,16 @@ sudo mkinitcpio -P
 sudo update-grub
 ### Done. Restart to enable hibernate.
 
+### Install stuff.
 # Enable AUR (needed for steamcmd)
 sudo sed --in-place "s/#EnableAUR/EnableAUR/" "/etc/pamac.conf"
 
-### Install everything we need.
 sudo pacman -Sy code godot gimp audacity lmms git-lfs
 
 # AUR stuff.
 pamac install steamcmd --no-confirm
 
+### configure stuff
 # git config
 git lfs install
 git config --global user.name nightblade9
