@@ -4,11 +4,8 @@
 # See: https://itsfoss.com/wrong-time-dual-boot/
 sudo timedatectl set-local-rtc 1
 
-
-# Temporarily disable flaky wifi; this needs to be done automatically on startup, somehow.
-echo sudo modprobe -r ath10k_pci >~/fix-internet.sh
-chmod a+x ~/fix-internet.sh
-~/fix-internet.sh
+# Disable flaky wifi on startup! And probably on hibernate.
+echo blacklist ath10k_pci | sudo tee -a /etc/modprobe.d/blacklist.conf
 
 # Initialize pacman and upgrade everything
 sudo pacman -Sy
