@@ -20,12 +20,14 @@ sudo ln -s /usr/lib/modules/5.15.38-1-MANJARO /usr/lib/modules/5.15.32-1-MANJARO
 cd /tmp
 git clone https://github.com/brektrou/rtl8821CU
 cd rtl8821CU
+# instructions from README.md
 uname -r
 echo note the major and minor version  number, e.g. 5.15 means install headers-515
-sudo pacman -S linux515-headers
-sudo pacman -S dkms 
+sudo pacman -Sy linux515-headers
+sudo pacman -Sy dkms 
 sudo ./dkms-install.sh
 
+### Enable hibernate
 # Add a swap file for hibernation. Assumes 16GB RAM. See: https://wiki.manjaro.org/index.php/Swap/en
 # This also enables hibernation. (Previous versions of Manjaro required additional steps.)
 sudo dd if=/dev/zero of=/swapfile bs=1M count=20480 status=progress
@@ -35,21 +37,29 @@ sudo swapon /swapfile
 sudo bash -c "echo /swapfile none swap defaults 0 0 >> /etc/fstab"
 
 ### TODO: automate this to get hibernate to work on resume
+# 1) get the UUID and offset
 findmnt -no UUID -T /swapfile # gives the hibernation device UUID
 sudo filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}' # gives the offset
-# Run sudo vi /etc/default/grub and append this (with the values above) to GRUB_CMDLINE_LINUX_DEFAULT: resume=UUID=<uuid> resume_offset=<offset>
-# Then: sudo vi /etc/mkinitcpio.conf. Look for HOOKS=(...) and add "resume" (no quotes) in there before fsck
 
+# 2) Run sudo vi /etc/default/grub and append this (with the values above) to GRUB_CMDLINE_LINUX_DEFAULT: resume=UUID=<uuid> resume_offset=<offset>
+# 3) Then: sudo vi /etc/mkinitcpio.conf. Look for HOOKS=(...) and add "resume" (no quotes) in there before fsck
+
+# Rebuild config
 sudo mkinitcpio -P
 sudo update-grub
+### Done. Restart to enable hibernate.
 
-# Blacklisting bad wifi doesn't work; disable it on startup
-echo sudo modprobe -r r8169 >>~/.bashrc
+# Enable AUR (needed for steamcmd)
+sudo sed --in-place "s/#EnableAUR/EnableAUR/" "/etc/pamac.conf"
 
-### Done. Install everything we need.
-sudo pacman -S code godot gimp audacity lmms git-lfs
-git lfs install
+### Install everything we need.
+sudo pacman -Sy code godot gimp audacity lmms git-lfs
+
+# AUR stuff. Just felt like separating it.
+sudo pacman -Sy steamcmd
+
 # git config
+git lfs install
 git config --global user.name nightblade9
 git config --global user.email nightbladecodes@gmail.com
 
