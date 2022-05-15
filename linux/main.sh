@@ -55,8 +55,8 @@ sudo sed --in-place "s/#EnableAUR/EnableAUR/" "/etc/pamac.conf"
 ### Install everything we need.
 sudo pacman -Sy code godot gimp audacity lmms git-lfs
 
-# AUR stuff. Just felt like separating it.
-sudo pacman -Sy steamcmd
+# AUR stuff.
+pamac install steamcmd --no-confirm
 
 # git config
 git lfs install
