@@ -53,7 +53,7 @@ sudo update-grub
 ### Done. Restart to enable hibernate.
 
 ### Install stuff.
-# Enable AUR (needed for steamcmd)
+# Enable AUR (needed for steamcmd - Steam dev tools)
 sudo sed --in-place "s/#EnableAUR/EnableAUR/" "/etc/pamac.conf"
 
 sudo pacman -Sy code godot gimp audacity lmms git-lfs
