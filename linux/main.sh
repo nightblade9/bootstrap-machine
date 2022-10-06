@@ -10,26 +10,6 @@ echo blacklist ath10k_pci | sudo tee -a /etc/modprobe.d/blacklist.conf
 # Initialize pacman and upgrade everything
 sudo pacman -Sy
 
-# Remove cruft
-sudo pacman -R thunderbird
-
-# Upgrade everything
-pacman -Syu
-
-### Get and build wifi driver
-# pretend we have the 5.15.32 drivers, we have 5.15.38
-sudo ln -s /usr/lib/modules/5.15.38-1-MANJARO /usr/lib/modules/5.15.32-1-MANJARO
-
-cd /tmp
-git clone https://github.com/brektrou/rtl8821CU
-cd rtl8821CU
-# instructions from README.md
-uname -r
-echo note the major and minor version  number, e.g. 5.15 means install headers-515
-sudo pacman -Sy linux515-headers
-sudo pacman -Sy dkms 
-sudo ./dkms-install.sh
-
 ### Enable hibernate
 # Add a swap file for hibernation. Assumes 16GB RAM. See: https://wiki.manjaro.org/index.php/Swap/en
 # This also enables hibernation. (Previous versions of Manjaro required additional steps.)
@@ -52,18 +32,23 @@ sudo mkinitcpio -P
 sudo update-grub
 ### Done. Restart to enable hibernate.
 
+# Remove cruft
+sudo pacman -R thunderbird
+
+# Upgrade everything
+sudo pacman -Syu
+
 ### Install stuff.
 # Enable AUR (needed for steamcmd - Steam dev tools)
 sudo sed --in-place "s/#EnableAUR/EnableAUR/" "/etc/pamac.conf"
 
-sudo pacman -Sy code godot gimp audacity lmms git-lfs
+sudo pacman -Sy code godot gimp audacity lmms intellij-idea-community-edition postgresql 
 
-# AUR stuff.
+# AUR stuff. TODO: MongoDB
 pamac install steamcmd --no-confirm
 
 ### configure stuff
 # git config
-git lfs install
 git config --global user.name nightblade9
 git config --global user.email nightbladecodes@gmail.com
 
