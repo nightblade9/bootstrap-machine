@@ -4,8 +4,12 @@
 # See: https://itsfoss.com/wrong-time-dual-boot/
 sudo timedatectl set-local-rtc 1
 
+# Refresh mirrors, existing ones may be out of date, 404ing and slowing everything down
+sudo pacman-mirrors
+# Now, update keyring things and stuff that will cause upgrading to fail
+sudo pacman-key --refresh-keys
 # Initialize pacman and upgrade everything
-sudo pacman -Sy
+sudo pacman -Syu
 
 ### Enable hibernate
 # Add a swap file for hibernation. Assumes 16GB RAM. See: https://wiki.manjaro.org/index.php/Swap/en
@@ -31,9 +35,6 @@ sudo update-grub
 
 # Remove cruft
 sudo pacman -R thunderbird
-
-# Upgrade everything
-sudo pacman -Syu
 
 ### Install stuff.
 # Enable AUR (needed for steamcmd - Steam dev tools)
