@@ -4,9 +4,6 @@
 # See: https://itsfoss.com/wrong-time-dual-boot/
 sudo timedatectl set-local-rtc 1
 
-# Disable flaky wifi on startup! And probably on hibernate.
-echo blacklist ath10k_pci | sudo tee -a /etc/modprobe.d/blacklist.conf
-
 # Initialize pacman and upgrade everything
 sudo pacman -Sy
 
