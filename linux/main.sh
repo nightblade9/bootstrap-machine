@@ -45,6 +45,10 @@ sudo pacman -Sy code godot gimp audacity lmms intellij-idea-community-edition po
 # AUR stuff. TODO: MongoDB
 pamac install steamcmd --no-confirm
 
+# SMH. OBS from Flatpak since the pamac one is broken as of writing
+sudo pacman -S flatpak         
+sudo flatpak install flathub com.obsproject.Studio.flatpakref
+
 ### configure stuff
 # git config
 git config --global user.name nightblade9
