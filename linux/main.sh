@@ -40,7 +40,8 @@ sudo pacman -R thunderbird
 # Enable AUR (needed for steamcmd - Steam dev tools)
 sudo sed --in-place "s/#EnableAUR/EnableAUR/" "/etc/pamac.conf"
 
-sudo pacman -Sy code godot gimp audacity lmms intellij-idea-community-edition postgresql 
+# Unzip is needed for heroic, lol
+sudo pacman -Sy code godot gimp audacity lmms intellij-idea-community-edition postgresql unzip
 
 # AUR stuff. TODO: MongoDB
 pamac install steamcmd --no-confirm
