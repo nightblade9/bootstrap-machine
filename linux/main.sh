@@ -40,10 +40,11 @@ sudo pacman -R thunderbird
 # Enable AUR (needed for steamcmd - Steam dev tools)
 sudo sed --in-place "s/#EnableAUR/EnableAUR/" "/etc/pamac.conf"
 
-# Unzip is needed for heroic, lol
-sudo pacman -Sy code godot gimp audacity lmms intellij-idea-community-edition postgresql unzip
-# Lots of stuff needed for Heroic (Wine, specifically) to run games. Source: https://github.com/lutris/docs/blob/master/WineDependencies.md#archendeavourosmanjaroother-arch-derivatives
+# Unzip is needed for heroic, lol.
+# xsane/xsane-gimp are for scanning.
+sudo pacman -Sy code godot gimp audacity lmms intellij-idea-community-edition unzip xsane xsane-gimp
 
+# Lots of stuff needed for Heroic (Wine, specifically) to run games. Source: https://github.com/lutris/docs/blob/master/WineDependencies.md#archendeavourosmanjaroother-arch-derivatives
 sudo pacman -S --needed wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls \
 mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error \
 lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo \
