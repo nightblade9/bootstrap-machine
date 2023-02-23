@@ -34,7 +34,7 @@ sudo update-grub
 ### Done. Restart to enable hibernate.
 
 # Remove cruft
-sudo pacman -R thunderbird
+sudo pacman -R thunderbird qbittorrent
 
 ### Install stuff.
 # Enable AUR (needed for steamcmd - Steam dev tools)
