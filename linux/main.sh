@@ -42,7 +42,7 @@ sudo sed --in-place "s/#EnableAUR/EnableAUR/" "/etc/pamac.conf"
 
 # Unzip is needed for heroic, lol.
 # xsane/xsane-gimp are for scanning.
-sudo pacman -Sy code godot gimp audacity lmms intellij-idea-community-edition unzip xsane xsane-gimp
+sudo pacman -Sy godot gimp audacity lmms intellij-idea-community-edition unzip xsane xsane-gimp
 
 # Lots of stuff needed for Heroic (Wine, specifically) to run games. Source: https://github.com/lutris/docs/blob/master/WineDependencies.md#archendeavourosmanjaroother-arch-derivatives
 sudo pacman -S --needed wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls \
@@ -58,6 +58,9 @@ pamac install steamcmd --no-confirm
 # SMH. OBS from Flatpak since the pamac one is broken as of writing
 sudo pacman -S flatpak         
 sudo flatpak install flathub com.obsproject.Studio.flatpakref
+
+# VSCode + C# doesn't work well with "code" (OSS version). The official version from Snap works, though.
+echo ********** don't forget to enable Snapcraft support and install the official "code"! (Both are named code, herp derp)
 
 ### configure stuff
 # git config
